@@ -1,0 +1,81 @@
+
+{% extends "views/layout.html" %}
+
+{% block content %}
+    <h1 class="text-center">{{title}}</h1>
+
+    {% comment %} 
+    {%%} are for logic / {{ }} to render values  
+    {% endcomment %}
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">year</th>
+      <th scope="col">price</th>
+      <th scope="col">Stock</th>
+    </tr>
+  </thead>
+    <tbody>
+    
+        {% for movie in catalog %}
+        <tr>
+            <th scope="row">{{movie.id}}</th>
+            <td><a href="/movies/detail/{{movie.id}}"> {{movie.title}}</a></td>
+            <td>{{movie.release_year}}</td>
+            <td>$ {{movie.price}}</td>
+            <td>{{movie.stock}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+{% endblock %}
+
+{% comment %} 
+Table:
+    title
+    year
+    price
+    stock
+    title = models.CharField(max_length = 100)
+    release_year = models.IntegerField()
+    price = models.FloatField()
+    stock = models.IntegerField()
+ {% endcomment %}
+
+ {% comment %} <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">year</th>
+      <th scope="col">price</th>
+      <th scope="col">Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table> {% endcomment %}
+
